@@ -1,5 +1,5 @@
 <h1 align="center">Recipe Name: <%= @recipe.name.capitalize %></h1>
-
+<hr />
 <div class="well col-md-8 col-md-offset-2">
   <h4 class="center description"><strong>Description: </strong></h4>
   <hr />
@@ -11,9 +11,7 @@
     </p>
     <p>
       <small><%= @recipe.chef.chefname %></small>
-      <div class="pull-right">
-        <%= time_ago_in_words(@recipe.created_at) %> ago
-      </div>
+      <div class="pull-right">created: <%= time_ago_in_words(@recipe.created_at) %> ago</div>
     </p>
   </div>
 </div>
