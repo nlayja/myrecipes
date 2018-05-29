@@ -1,6 +1,10 @@
 
 class ChefsController < ApplicationController
 
+  def index
+    @chefs = Chef.all
+  end
+
   def new
     @chef = Chef.new
   end
@@ -32,6 +36,7 @@ class ChefsController < ApplicationController
       render 'edit'
     end
   end
+
   private
   def chef_params
   params.require(:chef).permit(:chefname, :email,
