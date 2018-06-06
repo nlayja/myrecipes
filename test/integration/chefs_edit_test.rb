@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class ChefsEditTest < ActionDispatch::IntegrationTest
-  
+
   def setup
-  @chef = Chef.create!(chefname: "mashrur",
-                     email: "mashrur@example.com",
+  @chef = Chef.create!(chefname: "Nohemi Layja",
+                     email: "nlayjam@gmail.com",
                          password: "password",
                          password_confirmation: "password")
   end
@@ -22,12 +22,12 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   test "accept valid signup" do
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
-    patch chef_path(@chef), params: { chef: { chefname: "mashrur1",
-                                email: "mashrur1@example.com" } }
+    patch chef_path(@chef), params: { chef: { chefname: "Nohemi Layja",
+                                email: "nlayjam@gmail.com" } }
     assert_redirected_to @chef
     assert_not flash.empty?
     @chef.reload
-    assert_match "mashrur1", @chef.chefname
-    assert_match "mashrur1@example.com", @chef.email
+    assert_match "Nohemi Layja", @chef.chefname
+    assert_match "nlayjam@gmail.com", @chef.email
   end
 end

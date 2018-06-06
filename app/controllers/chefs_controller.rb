@@ -1,4 +1,3 @@
-
 class ChefsController < ApplicationController
 
   def index
@@ -10,13 +9,15 @@ class ChefsController < ApplicationController
   end
 
   def create
-    @chef = Chef.new(chef_params)
-    if @chef.save
-      flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
-      redirect_to chef_path(@chef)
-    else
-      render 'new'
-    end
+     @chef = Chef.new(chef_params)
+     if @chef.save
+       session[:chef_id] = @chef.id
+       cookies.signed[:chef_id] = @chef.id #this was incorrectly done in the video
+       flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
+       redirect_to chef_path(@chef)
+     else
+       render 'new'
+     end
   end
 
   def show
@@ -24,7 +25,7 @@ class ChefsController < ApplicationController
   end
 
   def edit
-     @chef = Chef.find(params[:id])
+    @chef = Chef.find(params[:id])
   end
 
   def update
@@ -37,9 +38,17 @@ class ChefsController < ApplicationController
     end
   end
 
-  private
-  def chef_params
-  params.require(:chef).permit(:chefname, :email,
-                               :password, :password_confirmation)
+  def destroy
+    @chef = Chef.find(params[:id])
+    @chef.destroy
+    flash[:danger] = "Chef and all associeted recipes have been deleted"
+    redirect_to chefs_path
   end
+
+  private
+
+  def chef_params
+  params.require(:chef).permit(:chefname, :email, :password, :password_confirmation)
+  end
+
 end

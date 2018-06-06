@@ -12,6 +12,8 @@
     <%= render 'layouts/navigation' %>
     <%= render 'layouts/messages' %>
     <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
