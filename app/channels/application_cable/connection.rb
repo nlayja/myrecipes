@@ -15,7 +15,7 @@ module ApplicationCable
         if current_chef = Chef.find_by(id: cookies.signed[:ched_id])
           current_chef
         else
-          rejecte_unauthorized_connection
+          reject_unauthorized_connection
         end
     end
   end

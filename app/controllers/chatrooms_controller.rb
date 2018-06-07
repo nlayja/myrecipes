@@ -1,9 +1,9 @@
 class ChatroomsController < ApplicationController
-
+  before_action :require_user
+  
   def show
-    @messages = Message.new
-    @messages = Message.all
-    #@messages = Message.most_recent
+    @message = Message.new
+    @messages = Message.most_recent
   end
 
 end
