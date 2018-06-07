@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20180606034418) do
     t.text "description"
     t.integer "chef_id"
     t.integer "recipe_id"
-    t.datetime "updated_at"
-    t.datetime "created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
