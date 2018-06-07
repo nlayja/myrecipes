@@ -3,7 +3,7 @@ require 'test_helper'
 class ChefsLoginTest < ActionDispatch::IntegrationTest
 
   def setup
-    @chef = Chef.create!(chefname: "Nohemi Layja", email: "nlayjam@gmail.com", password: "password")
+    @chef = Chef.create!(chefname: "Nohemi layja", email: "nlayjam@gmail.com", password: "password")
   end
 
   test "invalid login is rejected" do

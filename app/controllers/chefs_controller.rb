@@ -9,15 +9,15 @@ class ChefsController < ApplicationController
   end
 
   def create
-     @chef = Chef.new(chef_params)
-     if @chef.save
-       session[:chef_id] = @chef.id
-       cookies.signed[:chef_id] = @chef.id #this was incorrectly done in the video
-       flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
-       redirect_to chef_path(@chef)
-     else
-       render 'new'
-     end
+    @chef = Chef.new(chef_params)
+    if @chef.save
+      session[:chef_id] = @chef.id
+      cookies.signed[:chef_id] = @chef.id #this was incorrectly done in the video
+      flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
+      redirect_to chef_path(@chef)
+    else
+      render 'new'
+    end
   end
 
   def show
