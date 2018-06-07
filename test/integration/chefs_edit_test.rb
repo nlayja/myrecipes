@@ -13,7 +13,7 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
     patch chef_path(@chef), params: { chef: { chefname: " ",
-                              email: "mashrur@example.com" } }
+                              email: "nlayjam@gmail.com" } }
     assert_template 'chefs/edit'
     assert_select 'h2.panel-title'
     assert_select 'div.panel-body'
