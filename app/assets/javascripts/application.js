@@ -28,7 +28,7 @@ function submitMessage(event){
 }
 
 $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
-  if (event.keyCode === 13) {
+  if (event.keyCode == 13) {
     submitMessage(event);
   }
 });
@@ -37,7 +37,7 @@ $(document).on('click', '[data-send~=message]', function(event) {
   submitMessage(event);
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function()){
   $("#new_message").on("ajax:complete", function(e, data, status) {
     $('#message_content').val('');
   })
